@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using models;
+using interactor;
 
 public class LeftPanelPresenter : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class LeftPanelPresenter : MonoBehaviour
 
     private void Start()
     {
-        MapInteractor.Instance.GetResponse.AddListener(OpenPanel);
+        MapInteractor.instance.GetResponse.AddListener(OpenPanel);
     }
 
     public void OpenPanel(GeoCadasterResponseModel geoCadasterResponseModel)
