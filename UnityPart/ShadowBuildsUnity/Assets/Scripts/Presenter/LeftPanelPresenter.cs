@@ -14,7 +14,6 @@ public class LeftPanelPresenter : MonoBehaviour
     private RectTransform rectTransform;
 
 
-
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -27,11 +26,10 @@ public class LeftPanelPresenter : MonoBehaviour
 
     public void OpenPanel(GeoCadasterResponseModel geoCadasterResponseModel)
     {
-        var feature = geoCadasterResponseModel.features[0];
-        textContent.text = feature.properties.tuman + "\n" + feature.properties.tur + "\n" + feature.properties.uy_raqam;
+        var feature = geoCadasterResponseModel.features[0].properties;
+        textContent.text = feature.ToString().Replace("null", " ");
         rectTransform.DOLocalMoveX(1000, 0.6f);
     }
-
 
     public void ClosePanel()
     {
