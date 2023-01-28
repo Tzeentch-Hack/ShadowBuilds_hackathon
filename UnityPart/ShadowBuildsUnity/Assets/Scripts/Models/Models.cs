@@ -8,10 +8,10 @@ namespace models
 {
     public struct MapCaptureData
     {
-        public string tlx;
-        public string tly;
-        public string btx;
-        public string bty;
+        public string blX;
+        public string blY;
+        public string trX;
+        public string trY;
         public string x;
         public string y;
         public string height;
@@ -19,15 +19,14 @@ namespace models
 
         public MapCaptureData(double tlx, double tly, double btx, double bty, double x, double y, int height, int width)
         {
-            this.tlx = tlx.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.tly = tly.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.btx = btx.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.bty = bty.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.blX = tlx.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.blY = tly.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.trX = btx.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.trY = bty.ToString("0.0000000000", new CultureInfo("en-US"));
             this.x = x.ToString("0.0000000000", new CultureInfo("en-US"));
             this.y = y.ToString("0.0000000000", new CultureInfo("en-US"));
             this.height = height.ToString();
             this.width = width.ToString();
-
         }
     }
 

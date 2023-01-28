@@ -43,7 +43,7 @@ namespace Managers
             trY = tly;
             Debug.Log(blX.ToString("0.00000000",new CultureInfo("en-US")) + "," +  blY.ToString("0.00000000", new CultureInfo("en-US")) +
                 "~" + trX.ToString("0.00000000", new CultureInfo("en-US")) + "," + trY.ToString("0.00000000", new CultureInfo("en-US")));
-            MapCaptureData newMapData = new MapCaptureData(tlx, tly, brx, bry, x, y, height: 512, width: 1024);
+            MapCaptureData newMapData = new MapCaptureData(blX, blY, trX, trY, x, y, height: 512, width: 512);
             return newMapData;
         }
     }
