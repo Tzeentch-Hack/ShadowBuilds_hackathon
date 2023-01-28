@@ -33,11 +33,18 @@ namespace Managers
 
             onlineMapsUIImageControl.OnMapRelease += OnChangePosition;
             onlineMapsUIImageControl.OnMapPress += OnPositionChangingBegin;
-
+            MapInteractor.instance.SetUpMarkers.AddListener(CreateMarkersOnMap);
             addressText.onEndEdit.AddListener(OnInputValueChange);
             yandexGeocoding = new YandexGeocodingInteractor();
         }
 
+        public void CreateMarkersOnMap(MarkerPoints markers)
+        {
+            foreach(var point in markers.points)
+            {
+                OnlineMapsMarkerManager.CreateItem(point.marker[1], point.marker[0]);
+            }
+        }
         private void OnInputValueChange(string temp)
         {
             if (temp != string.Empty) GetAndDisplayLocationByName(temp);
@@ -107,8 +114,8 @@ namespace Managers
             blY = bry;
             trX = brx;
             trY = tly;
-            Debug.Log(blX.ToString("0.00000000",new CultureInfo("en-US")) + "," +  blY.ToString("0.00000000", new CultureInfo("en-US")) +
-                "~" + trX.ToString("0.00000000", new CultureInfo("en-US")) + "," + trY.ToString("0.00000000", new CultureInfo("en-US")));
+            Debug.Log(blX.ToString("0.0000000000",new CultureInfo("en-US")) + "," +  blY.ToString("0.0000000000", new CultureInfo("en-US")) +
+                "~" + trX.ToString("0.0000000000", new CultureInfo("en-US")) + "," + trY.ToString("0.0000000000", new CultureInfo("en-US")));
             MapCaptureData newMapData = new MapCaptureData(blX, blY, trX, trY, x, y, height: 512, width: 512);
             return newMapData;
         }

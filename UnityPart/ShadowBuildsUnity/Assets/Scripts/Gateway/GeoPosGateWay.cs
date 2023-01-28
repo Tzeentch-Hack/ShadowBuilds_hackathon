@@ -10,7 +10,7 @@ using interactor;
 public class GeoPosGateWay 
 {
 
-    private readonly string basePath = "http://100.65.2.151:5000";
+    private readonly string basePath = "http://25.80.64.16:5000";
 
     public static GeoPosGateWay Instance;
 
