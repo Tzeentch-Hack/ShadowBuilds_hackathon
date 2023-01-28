@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 namespace models
@@ -18,12 +19,12 @@ namespace models
 
         public MapCaptureData(double tlx, double tly, double btx, double bty, double x, double y, int height, int width)
         {
-            this.tlx = tlx.ToString("0.0000000");
-            this.tly = tly.ToString("0.0000000");
-            this.btx = btx.ToString("0.0000000");
-            this.bty = bty.ToString("0.0000000");
-            this.x = x.ToString("0.0000000");
-            this.y = y.ToString("0.0000000");
+            this.tlx = tlx.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.tly = tly.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.btx = btx.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.bty = bty.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.x = x.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.y = y.ToString("0.0000000000", new CultureInfo("en-US"));
             this.height = height.ToString();
             this.width = width.ToString();
 
