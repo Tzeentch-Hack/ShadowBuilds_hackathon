@@ -10,12 +10,14 @@ namespace interactor
 {
     public class MapInteractor
     {
-        public UnityEvent<GeoCadasterResponseModel> GetResponse;
+        public UnityEvent<GeoCadasterResponseModel> GetGeoInfoResponse;
+        public UnityEvent<MarkerPoints> SetUpMarkers;
         public static MapInteractor instance;
 
         public MapInteractor()
         {
-            GetResponse = new UnityEvent<GeoCadasterResponseModel>();
+            GetGeoInfoResponse = new UnityEvent<GeoCadasterResponseModel>();
+            SetUpMarkers = new UnityEvent<MarkerPoints>();
             if (instance == null)
                 instance = this;
         }

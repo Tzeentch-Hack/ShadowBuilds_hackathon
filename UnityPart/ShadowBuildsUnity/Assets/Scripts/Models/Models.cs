@@ -90,5 +90,18 @@ namespace models
         public Crs crs;
         public List<double> bbox;
     }
+
+    [Serializable]
+    public class Points
+    {
+       public double x;
+       public double y;
+    }
+
+    [Serializable]
+    public class MarkerPoints
+    {
+        public List<Points> points;
+    }
 }
 

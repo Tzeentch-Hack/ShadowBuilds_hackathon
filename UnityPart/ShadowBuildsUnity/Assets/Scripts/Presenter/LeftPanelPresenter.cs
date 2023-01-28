@@ -21,13 +21,13 @@ public class LeftPanelPresenter : MonoBehaviour
 
     private void Start()
     {
-        MapInteractor.instance.GetResponse.AddListener(OpenPanel);
+        MapInteractor.instance.GetGeoInfoResponse.AddListener(OpenPanel);
     }
 
     public void OpenPanel(GeoCadasterResponseModel geoCadasterResponseModel)
     {
         var feature = geoCadasterResponseModel.features[0].properties;
-        textContent.text = feature.ToString().Replace("null", " ");
+        textContent.text = feature.ToString().Replace("null", " ").Replace(" ","\n").ToUpper();
         rectTransform.DOLocalMoveX(1000, 0.6f);
     }
 

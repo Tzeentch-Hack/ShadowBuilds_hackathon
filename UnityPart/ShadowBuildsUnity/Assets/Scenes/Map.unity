@@ -2625,6 +2625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 382237113}
   onlineMapsUIImageControl: {fileID: 382237116}
+  mapMarker: {fileID: 382237117}
   addressText: {fileID: 99217303}
 --- !u!1 &1637809693
 GameObject:

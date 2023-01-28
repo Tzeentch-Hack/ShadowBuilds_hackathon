@@ -20,6 +20,9 @@ namespace Managers
         [SerializeField] 
         OnlineMapsUIImageControl onlineMapsUIImageControl;
 
+        [SerializeField]
+        private OnlineMapsMarkerManager mapMarker;
+
         [SerializeField] TMP_InputField addressText;
 
         private YandexGeocodingInteractor yandexGeocoding;
