@@ -24,6 +24,11 @@ def get_geo_info():
         return make_response(str(e))
 
 
+@app.route("/PostCurrentMapInfo", methods=['POST'])
+def post_current_map_info():
+    request.form.get('x')
+    request.form.get('y')
+    request.form.get('')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
