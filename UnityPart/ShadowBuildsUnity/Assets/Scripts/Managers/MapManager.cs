@@ -16,6 +16,13 @@ namespace Managers
             MapInteractor.instance.getCornersAndCentre += OnGetCornersAndCentre;
         }
 
+        public void GetCenter()
+        {
+            double lat, lon;
+            map.GetPosition(out lon,out lat);
+            MapInteractor.instance.SendGeoPos(lat, lon);
+        }
+
         public void OnGetCornersAndCentre()
         {
             var mapData = GetCornersAndCentre();

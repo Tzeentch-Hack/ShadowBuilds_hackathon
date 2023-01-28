@@ -30,7 +30,8 @@ public class GeoPosGateWay
         RestClient.Get(url).Then(res =>
         {
             this.LogMessage("Success",res.Text);
-            var finishModel = JsonUtility.FromJson<GeoCadasterResponseModel>(res.Text);
+            var finishModel = JsonUtility.FromJson<GeoCadasterResponseModel>(res.Text.Replace("\'","\""));
+            MapInteractor.instance.GetResponse.Invoke(finishModel);
         }
         ).Catch(error =>
         {

@@ -8,6 +8,7 @@ using interactor;
     {
         private GeoPosGateWay geoPosGateWay;
         private MapInteractor mapInteractor;
+
         void Awake()
         {
             mapInteractor = new MapInteractor();

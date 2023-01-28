@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using models;
 
 public class LeftPanelPresenter : MonoBehaviour
 {
@@ -11,32 +12,28 @@ public class LeftPanelPresenter : MonoBehaviour
 
     private RectTransform rectTransform;
 
-    private bool isPanelOpen;
 
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        isPanelOpen = false;
     }
 
-    public void SwitchPanel()
+    private void Start()
     {
-        if (isPanelOpen)
-            ClosePanel();
-        else
-            OpenPanel();
+        MapInteractor.Instance.GetResponse.AddListener(OpenPanel);
     }
 
-    public void OpenPanel()
+    public void OpenPanel(GeoCadasterResponseModel geoCadasterResponseModel)
     {
-        isPanelOpen = true;
+        var feature = geoCadasterResponseModel.features[0];
+        textContent.text = feature.properties.tuman + "\n" + feature.properties.tur + "\n" + feature.properties.uy_raqam;
         rectTransform.DOLocalMoveX(1000, 0.6f);
     }
 
+
     public void ClosePanel()
     {
-        isPanelOpen = false;
         rectTransform.DOLocalMoveX(2000, 0.6f);
     }
 }
