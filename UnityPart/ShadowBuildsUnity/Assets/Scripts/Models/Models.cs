@@ -34,62 +34,62 @@ namespace models
     [Serializable]
     public class Crs
     {
-        public string type { get; set; }
-        public Properties properties { get; set; }
+        public string type;
+        public Properties properties;
     }
 
     [Serializable]
     public class Feature
     {
-        public string type { get; set; }
-        // public string id { get; set; }
-        //  public Geometry geometry { get; set; }
-        //  public string geometry_name { get; set; }
-        public Properties properties { get; set; }
-        //  public List<double> bbox { get; set; }
+        public string type;
+        // public string id ;
+        //  public Geometry geometry ;
+        //  public string geometry_name ;
+        public Properties properties;
+        //  public List<double> bbox ;
     }
 
     [Serializable]
     public class Geometry
     {
-        public string type { get; set; }
-        public List<List<List<List<double>>>> coordinates { get; set; }
+        public string type;
+        public List<List<List<List<double>>>> coordinates;
     }
 
 
     [Serializable]
     public class Properties
     {
-        public string kadastr { get; set; }
-        public string manzil { get; set; }
-        public string tur { get; set; }
-        public string maydoni_ga { get; set; }
-        public string saylov_uchastka { get; set; }
-        public string saylov_manzil { get; set; }
-        public string saylov_nom { get; set; }
-        public string narx { get; set; }
-        public string yer_turi { get; set; }
-        public string uzgarish { get; set; }
-        public string xujjat { get; set; }
-        public string tuman { get; set; }
-        public string mahalla { get; set; }
-        public string ax { get; set; }
-        public string kucha { get; set; }
-        public string uy_raqam { get; set; }
-        public string subyekt4 { get; set; }
-        public string name { get; set; }
+        public string kadastr;
+        public string manzil;
+        public string tur;
+        public string maydoni_ga;
+        public string saylov_uchastka;
+        public string saylov_manzil;
+        public string saylov_nom;
+        public string narx;
+        public string yer_turi;
+        public string uzgarish;
+        public string xujjat;
+        public string tuman;
+        public string mahalla;
+        public string ax;
+        public string kucha;
+        public string uy_raqam;
+        public string subyekt4;
+        public string name;
     }
 
     [Serializable]
     public class GeoCadasterResponseModel
     {
-        public string type { get; set; }
-        public List<Feature> features { get; set; }
-        public string totalFeatures { get; set; }
-        public string numberReturned { get; set; }
-        public string timeStamp { get; set; }
-        public Crs crs { get; set; }
-        //    public List<double> bbox { get; set; }
+        public string type;
+        public List<Feature> features;
+        public string totalFeatures;
+        public string numberReturned;
+        public string timeStamp;
+        public Crs crs;
+        public List<double> bbox;
     }
 }
 

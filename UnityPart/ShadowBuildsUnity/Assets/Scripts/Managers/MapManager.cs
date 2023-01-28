@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using models;
 using interactor;
+using System.Globalization;
 
 namespace Managers
 {
@@ -31,12 +32,18 @@ namespace Managers
 
         private MapCaptureData GetCornersAndCentre()
         {
-            double tlx, tly, btx, bty;
+            double tlx, tly, brx, bry;
             double x, y;
-            map.GetCorners(out tlx, out tly, out btx, out bty);
+            map.GetCorners(out tlx, out tly, out brx, out bry);
             map.GetPosition(out x, out y);
-            Debug.Log(tlx.ToString() + ", " +  tly.ToString() + ", " + btx.ToString() + ", " + bty.ToString());
-            MapCaptureData newMapData = new MapCaptureData(tlx, tly, btx, bty, x, y, height: 512, width: 1024);
+            double blX, blY, trX, trY;
+            blX = tlx;
+            blY = bry;
+            trX = brx;
+            trY = tly;
+            Debug.Log(blX.ToString("0.00000000",new CultureInfo("en-US")) + "," +  blY.ToString("0.00000000", new CultureInfo("en-US")) +
+                "~" + trX.ToString("0.00000000", new CultureInfo("en-US")) + "," + trY.ToString("0.00000000", new CultureInfo("en-US")));
+            MapCaptureData newMapData = new MapCaptureData(tlx, tly, brx, bry, x, y, height: 512, width: 1024);
             return newMapData;
         }
     }

@@ -15,6 +15,7 @@ namespace interactor
 
         public MapInteractor()
         {
+            GetResponse = new UnityEvent<GeoCadasterResponseModel>();
             if (instance == null)
                 instance = this;
         }

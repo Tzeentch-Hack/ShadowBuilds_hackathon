@@ -29,13 +29,13 @@ public class GeoPosGateWay
         //Debug.Log(url);
         RestClient.Get(url).Then(res =>
         {
-            this.LogMessage("Success",res.Text);
+            //this.LogMessage("Success", res.Text);
             var finishModel = JsonUtility.FromJson<GeoCadasterResponseModel>(res.Text.Replace("\'","\""));
             MapInteractor.instance.GetResponse.Invoke(finishModel);
         }
         ).Catch(error =>
         {
-            this.LogMessage("Error", JsonUtility.ToJson(error.Message, true));
+            //this.LogMessage("Error", JsonUtility.ToJson(error.Message, true));
         });
 
     }
