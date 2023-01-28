@@ -12,11 +12,17 @@ def hello_world():
 
 @app.route("/GetGeoInfo", methods=['POST', 'GET'])
 def get_geo_info():
-    x = float(request.args.get('x'))
-    y = float(request.args.get('y'))
-    bbox = CoordinatesUtils.get_projected_bbox_from_coordinates(x, y)
-    response = gateway.get_cadastre_info_from_open_data_base(bbox)
-    return make_response(response)
+    try:
+        x = float(request.args.get('x'))
+        y = float(request.args.get('y'))
+        print("Get geoInfo request for x = " + str(x) + ", y=" + str(y))
+        bbox = CoordinatesUtils.get_projected_bbox_from_coordinates(x, y)
+        response = gateway.get_cadastre_info_from_open_data_base(bbox)
+        print("response with ", response)
+        return make_response(response)
+    except Exception as e:
+        return make_response(str(e))
+
 
 
 if __name__ == "__main__":
