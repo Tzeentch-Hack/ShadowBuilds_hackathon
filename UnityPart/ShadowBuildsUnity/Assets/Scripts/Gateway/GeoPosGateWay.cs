@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEditor;
 using UnityEngine;
-using models;
 using interactor;
 
 public class GeoPosGateWay 
@@ -26,16 +25,16 @@ public class GeoPosGateWay
     {   
 
         var url = (basePath + "/GetGeoInfo" + "?" + $"x={lat.ToString("0.0000000", new CultureInfo("en-US"))}" + "&" + $"y={lon.ToString("0.0000000", new CultureInfo("en-US"))}");
-        //Debug.Log(url);
+
         RestClient.Get(url).Then(res =>
         {
-            //this.LogMessage("Success", res.Text);
+          
             var finishModel = JsonUtility.FromJson<GeoCadasterResponseModel>(res.Text.Replace("\'","\""));
             MapInteractor.instance.GetResponse.Invoke(finishModel);
         }
         ).Catch(error =>
         {
-            //this.LogMessage("Error", JsonUtility.ToJson(error.Message, true));
+            this.LogMessage("Error", JsonUtility.ToJson(error.Message, true));
         });
 
     }
