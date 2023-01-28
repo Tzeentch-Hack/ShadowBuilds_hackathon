@@ -4,6 +4,12 @@ using UnityEngine;
 using models;
 using interactor;
 using System.Globalization;
+using System;
+using YandexGeocodingAPI;
+using TMPro;
+using UnityEngine.UI;
+using Unity.VisualScripting;
+using System.Text;
 
 namespace Managers
 {
@@ -11,10 +17,67 @@ namespace Managers
     {
         [SerializeField]
         private OnlineMaps map;
+        [SerializeField] 
+        OnlineMapsUIImageControl onlineMapsUIImageControl;
+
+        [SerializeField] TMP_InputField addressText;
+
+        private YandexGeocodingInteractor yandexGeocoding;
 
         private void Start()
         {
             MapInteractor.instance.getCornersAndCentre += OnGetCornersAndCentre;
+
+            onlineMapsUIImageControl.OnMapRelease += OnChangePosition;
+            onlineMapsUIImageControl.OnMapPress += OnPositionChangingBegin;
+
+            addressText.onEndEdit.AddListener(OnInputValueChange);
+            yandexGeocoding = new YandexGeocodingInteractor();
+        }
+
+        private void OnInputValueChange(string temp)
+        {
+            if (temp != string.Empty) GetAndDisplayLocationByName(temp);
+        }
+
+        private void GetAndDisplayLocationByName(string temp)
+        {
+            StringBuilder searchString = new StringBuilder();
+            if (addressText.text.Length > 0)
+                searchString.Append(", " + addressText.text);
+            searchString.Remove(0, 2);
+            string searchLocationText = searchString.ToString();
+            yandexGeocoding.GetMapPointByText(searchLocationText, (point, fullAddress) =>
+            {
+                map.position = point;
+            },
+            (err) =>
+            {
+                Debug.Log(err);
+            });
+        }
+
+        private void OnPositionChangingBegin()
+        {
+            addressText.text = string.Empty;
+        }
+
+        private void GetAndDisplayLocationByCoords(Vector2 coords)
+        {
+            yandexGeocoding.GetAdressByCoords(coords,
+            (location) =>
+            {
+                addressText.text = location.fullAddressSttring;
+            },
+            (err) =>
+            {
+                Debug.Log(err);
+            });
+        }
+
+        private void OnChangePosition()
+        {
+            GetAndDisplayLocationByCoords(map.position);
         }
 
         public void GetCenter()
