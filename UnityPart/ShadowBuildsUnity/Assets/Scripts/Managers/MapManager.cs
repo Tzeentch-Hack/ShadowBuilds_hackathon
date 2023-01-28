@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using models;
+using interactor;
 
 namespace Managers
 {
@@ -9,16 +11,26 @@ namespace Managers
         [SerializeField]
         private OnlineMaps map;
 
-        private void Awake()
+        private void Start()
         {
-            //map = GetComponent<OnlineMaps>();
+            MapInteractor.instance.getCornersAndCentre += OnGetCornersAndCentre;
         }
 
-        public void GetCorners()
+        public void OnGetCornersAndCentre()
+        {
+            var mapData = GetCornersAndCentre();
+            MapInteractor.instance.onGetCornersAndCentre?.Invoke(mapData);
+        }
+
+        private MapCaptureData GetCornersAndCentre()
         {
             double tlx, tly, btx, bty;
+            double x, y;
             map.GetCorners(out tlx, out tly, out btx, out bty);
-            Debug.Log(tlx.ToString() + tly.ToString() + btx.ToString() + bty.ToString());
+            map.GetPosition(out x, out y);
+            Debug.Log(tlx.ToString() + ", " +  tly.ToString() + ", " + btx.ToString() + ", " + bty.ToString());
+            MapCaptureData newMapData = new MapCaptureData(tlx, tly, btx, bty, x, y, height: 512, width: 1024);
+            return newMapData;
         }
     }
 }
