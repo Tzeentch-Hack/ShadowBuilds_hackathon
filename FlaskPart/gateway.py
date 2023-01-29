@@ -1,4 +1,22 @@
 import requests
+from PIL import Image
+from io import StringIO
+def get_satellite_image_by_bbox(bobox):
+    payload = {'l': 'sat', 'bbox': '{},{}~{},{}'.format(bobox[0], bobox[1], bobox[2], bobox[3]), 'size':'450,450'}
+    r = requests.get('https://static-maps.yandex.ru/1.x/', params=payload)
+    print('r.url', r.url)
+    with open("response.jpg", "wb") as f:
+        f.write(r.content)
+    return "response.jpg"
+
+def get_satellite_image_by_centre_and_zoom(centre, zoom):
+    payload = {'l': 'sat', 'll': '{},{}'.format(centre[0], centre[1]), 'size': '450,450', 'z': zoom}
+    r = requests.get('https://static-maps.yandex.ru/1.x/', params=payload)
+    print('r.url', r.url)
+    with open("response.jpg", "wb") as f:
+        f.write(r.content)
+    return "response.jpg"
+
 
 def get_cadastre_info_from_open_data_base(bbox):
     payload = {'service': 'WMS', 'version': '1.1.1', 'request': 'GetFeatureInfo',
