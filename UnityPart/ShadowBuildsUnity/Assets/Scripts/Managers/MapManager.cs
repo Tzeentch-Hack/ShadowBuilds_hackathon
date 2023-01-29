@@ -42,7 +42,7 @@ namespace Managers
         {
             foreach(var point in markers.points)
             {
-               OnlineMapsMarkerManager.CreateItem(point.y, point.x);
+               OnlineMapsMarkerManager.CreateItem(point.x, point.y);
             }
         }
         private void OnInputValueChange(string temp)
