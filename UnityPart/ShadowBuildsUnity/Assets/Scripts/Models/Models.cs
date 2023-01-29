@@ -94,7 +94,8 @@ namespace models
     [Serializable]
     public class Points
     {
-       public List<double> marker;
+       public double x;
+       public double y;
     }
 
     [Serializable]

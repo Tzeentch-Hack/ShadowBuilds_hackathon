@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items: []
-  defaultScale: 0.1
+  defaultScale: 0.01
   defaultTexture: {fileID: 2800000, guid: ff8563cc07ae48c4d9da1495d1237a86, type: 3}
   defaultAlign: 4
   allowAddMarkerByM: 1
@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 497579586}
   m_HandleRect: {fileID: 497579585}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
