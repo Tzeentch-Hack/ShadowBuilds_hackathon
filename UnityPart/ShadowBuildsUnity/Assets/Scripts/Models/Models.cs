@@ -14,17 +14,19 @@ namespace models
         public string trY;
         public string x;
         public string y;
+        public string z;
         public string height;
         public string width;
 
-        public MapCaptureData(double tlx, double tly, double btx, double bty, double x, double y, int height, int width)
+        public MapCaptureData(double tlx, double tly, double btx, double bty, double x, double y, int height, int width, int z)
         {
-            this.blX = tlx.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.blY = tly.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.trX = btx.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.trY = bty.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.x = x.ToString("0.0000000000", new CultureInfo("en-US"));
-            this.y = y.ToString("0.0000000000", new CultureInfo("en-US"));
+            this.blX = tlx.ToString("0.0000000000000000", new CultureInfo("en-US"));
+            this.blY = tly.ToString("0.0000000000000000", new CultureInfo("en-US"));
+            this.trX = btx.ToString("0.0000000000000000", new CultureInfo("en-US"));
+            this.trY = bty.ToString("0.0000000000000000", new CultureInfo("en-US"));
+            this.x = x.ToString("0.0000000000000000", new CultureInfo("en-US"));
+            this.y = y.ToString("0.0000000000000000", new CultureInfo("en-US"));
+            this.z = z.ToString();
             this.height = height.ToString();
             this.width = width.ToString();
         }

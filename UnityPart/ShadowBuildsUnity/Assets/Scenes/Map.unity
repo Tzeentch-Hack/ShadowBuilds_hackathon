@@ -797,8 +797,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items: []
-  defaultScale: 0.05
-  defaultTexture: {fileID: 2800000, guid: ff8563cc07ae48c4d9da1495d1237a86, type: 3}
+  defaultScale: 0.07
+  defaultTexture: {fileID: 2800000, guid: 48340290deb9f334b8ab7de9f70c8e52, type: 3}
   defaultAlign: 4
   allowAddMarkerByM: 1
 --- !u!1 &411779761

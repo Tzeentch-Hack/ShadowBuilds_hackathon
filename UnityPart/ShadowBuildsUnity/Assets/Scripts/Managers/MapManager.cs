@@ -30,7 +30,7 @@ namespace Managers
         private void Start()
         {
             MapInteractor.instance.getCornersAndCentre += OnGetCornersAndCentre;
-
+            MapInteractor.instance.getCornersAndCentreForAll += onGetCornersAndCenterForAll;
             onlineMapsUIImageControl.OnMapRelease += OnChangePosition;
             onlineMapsUIImageControl.OnMapPress += OnPositionChangingBegin;
             MapInteractor.instance.SetUpMarkers.AddListener(CreateMarkersOnMap);
@@ -40,9 +40,10 @@ namespace Managers
 
         public void CreateMarkersOnMap(MarkerPoints markers)
         {
-            foreach(var point in markers.points)
+            OnlineMapsMarkerManager.RemoveAllItems();
+            foreach (var point in markers.points)
             {
-               OnlineMapsMarkerManager.CreateItem(point.x, point.y);
+                OnlineMapsMarkerManager.CreateItem(point.x, point.y);
             }
         }
         private void OnInputValueChange(string temp)
@@ -97,6 +98,12 @@ namespace Managers
             MapInteractor.instance.SendGeoPos(lat, lon);
         }
 
+        public void onGetCornersAndCenterForAll()
+        {
+            var mapData = GetCornersAndCentre();
+            MapInteractor.instance.onGetCornersAndCentreForAll?.Invoke(mapData);
+        }
+
         public void OnGetCornersAndCentre()
         {
             var mapData = GetCornersAndCentre();
@@ -114,9 +121,10 @@ namespace Managers
             blY = bry;
             trX = brx;
             trY = tly;
+            int z = map.zoom;
             Debug.Log(blX.ToString("0.0000000000",new CultureInfo("en-US")) + "," +  blY.ToString("0.0000000000", new CultureInfo("en-US")) +
                 "~" + trX.ToString("0.0000000000", new CultureInfo("en-US")) + "," + trY.ToString("0.0000000000", new CultureInfo("en-US")));
-            MapCaptureData newMapData = new MapCaptureData(blX, blY, trX, trY, x, y, height: 512, width: 512);
+            MapCaptureData newMapData = new MapCaptureData(blX, blY, trX, trY, x, y, height: 512, width: 512,z);
             return newMapData;
         }
     }

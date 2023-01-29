@@ -28,7 +28,9 @@ namespace interactor
         }
 
         public Action getCornersAndCentre;
+        public Action getCornersAndCentreForAll;
         public Action<MapCaptureData> onGetCornersAndCentre;
+        public Action<MapCaptureData> onGetCornersAndCentreForAll;
     }
 }
 

@@ -19,6 +19,7 @@ public class GeoPosGateWay
     {
         Instance = this;
         MapInteractor.instance.onGetCornersAndCentre += SendScanedImageAndCoords;
+        MapInteractor.instance.onGetCornersAndCentreForAll += SendScanedImageAndCoordsAllData;
     }
 
     public void GetDataAboutPos(double lat, double lon)
@@ -39,9 +40,24 @@ public class GeoPosGateWay
 
     }
 
-    public void SendScanedImageAndCoords(MapCaptureData mapData)
+    public void SendScanedImageAndCoordsAllData(MapCaptureData mapData)
     {
         var url = (basePath + "/PostCurrentMapInfo");
+
+        RestClient.Post(url, mapData).Then((response) =>
+        {
+            Debug.Log(response.Text);
+            var finishModel = JsonUtility.FromJson<MarkerPoints>(response.Text);
+            MapInteractor.instance.SetUpMarkers.Invoke(finishModel);
+        }).Catch((error) =>
+        {
+            this.LogMessage("Error", JsonUtility.ToJson(error.Message, true));
+        });
+    }
+
+    public void SendScanedImageAndCoords(MapCaptureData mapData)
+    {
+        var url = (basePath + "/PostCadastreMapInfo");
 
         RestClient.Post(url, mapData).Then((response) =>
         {
