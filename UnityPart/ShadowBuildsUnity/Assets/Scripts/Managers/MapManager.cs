@@ -100,6 +100,7 @@ namespace Managers
 
         public void onGetCornersAndCenterForAll()
         {
+            
             var mapData = GetCornersAndCentre();
             MapInteractor.instance.onGetCornersAndCentreForAll?.Invoke(mapData);
         }
